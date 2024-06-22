@@ -2,6 +2,7 @@ import React from "react";
 import React, { useState } from "react";
 import Card from "./Card";
 import ErrorMessage from "./ErrorMessage";
+import Contact from "../Routes/Contact";
 
 
  const Form = () => {
@@ -9,14 +10,14 @@ import ErrorMessage from "./ErrorMessage";
     nombre: "",
     email: "",
   });
-  const [turno, setTurno] = useState(false);
+  const [info, setInfo] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     if (paciente.nombre.trim().length > 5 && regex.test(paciente.email)) {
-      setTurno(true);
+      setInfo(true);
       setError(false);
     } else {
       setError(true);
@@ -44,7 +45,7 @@ import ErrorMessage from "./ErrorMessage";
         />
         <button>Finalizar</button>
       </form>
-      {turno && <Card paciente={paciente} />}
+      {info && <Contact paciente={paciente} />}
       {error && <ErrorMessage />}
     </>
   );
