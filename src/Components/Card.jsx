@@ -1,7 +1,17 @@
 import React from "react";
+import { docContext } from "./utils/global.context";
+import { Link } from "react-router-dom";
 
+const Card = ({ data ,}) => {
+  const { dispatch} = docContext();
+  return (
+    <div className="grid">
+      <Link to={"/dentista/"+ data.id}>
+      <h3>{data.name}</h3>
 
-const Card = ({ name, username, id }) => {
+      </Link>
+    </div>
+  );
 
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
@@ -9,7 +19,7 @@ const Card = ({ name, username, id }) => {
 
   return (
     <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
+
 
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
 
